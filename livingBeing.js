@@ -1,7 +1,7 @@
 (function() {
 	//Here we will make our characters.
 
-	function LivingBeing(x, y, healthPoints, movingSpeed, appearance, imageIndex) {
+	window.LivingBeing = function(x, y, healthPoints, movingSpeed, appearance, imageIndex) {
 		this.x = x; 
 		this.y = y;
 		//These are the coordinates on which we will position the instances of this object.

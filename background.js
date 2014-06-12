@@ -1,7 +1,8 @@
 (function() {
 	//Here we will draw our background.
 
-	function Background() {
+	//Will "window." change the scope? If "Yes" it should be put
+	window.Background = function(){
 		this.paper = Raphael(10, 10, 10, 10); 
 		//Paper's size should be same as the canvas size(which we should consider).
 		
