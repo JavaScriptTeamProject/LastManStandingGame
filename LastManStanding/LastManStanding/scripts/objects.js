@@ -48,7 +48,7 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
     return character;
 };
 
-var createEnemy = function (podition, healthPoints, movingSpeed, attack, images) {
+var createEnemy = function (position, healthPoints, movingSpeed, attack, images) {
     var enemy = createLivingBeing(position, healthPoints, movingSpeed, attack, images);
     enemy.move = function (character, modifier) {
         if ((enemy.position.x - character.position.x) > 0) {
