@@ -3,20 +3,16 @@
 <head>
 	<title>Last Man Standing</title>
 	<style type="text/css">
-	svg { 
-		/* This will bring the background to the back... ground. */
-		position: absolute;
-		z-index: -1;
-	}
 	</style>
 </head>
 <body>
-	<canvas id="canvas-animation" width="760" height="420"></canvas> 
+    <div id="svg-container"></div>
+	<canvas id="canvas" width="760" height="420"></canvas> 
 	<!-- We haven't consider the screen size yet! TO DO! -->
-
-	<script type="text/javascript" src="background.js"></script>
-	<script type="text/javascript" src="livingBeing.js"></script>
-	<script type="text/javascript" src="spawner.js"></script>
-	<script type="text/javascript" src="main.js"></script>
+    <script src="scripts/engine.js"></script>
+    <script src="scripts/objects.js"></script>
+    <script src="scripts/raphael-min.js"></script>
+    <script src="scripts/spawner.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
 </body>
 </html>
