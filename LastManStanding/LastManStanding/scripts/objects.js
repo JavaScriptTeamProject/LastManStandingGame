@@ -48,7 +48,7 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
     return character;
 };
 
-var createEnemy = function (podition, healthPoints, movintSpeed, attack, images) {
+var createEnemy = function (podition, healthPoints, movingSpeed, attack, images) {
     var enemy = createLivingBeing(position, healthPoints, movingSpeed, attack, images);
     enemy.move = function (character, modifier) {
         if ((enemy.position.x - character.position.x) > 0) {
@@ -64,4 +64,14 @@ var createEnemy = function (podition, healthPoints, movintSpeed, attack, images)
             enemy.position.y += enemy.movingSpeed * modifier;
         }
     }
+    enemy.attackHero = function (character) {
+        if (character.position.x <= (enemy.position.x + 28)
+            && enemy.position.x <= (character.position.x + 28)
+            && character.position.y <= (enemy.position.y + 34)
+            && enemy.position.y <= (character.position.y + 34)) {
+            character.hp -= enemy.attack.demege;
+        }
+    }
+
+    return enemy;
 }
