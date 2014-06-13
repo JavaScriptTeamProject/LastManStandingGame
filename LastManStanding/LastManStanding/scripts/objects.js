@@ -44,6 +44,28 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
             this.position.y += this.movingSpeed * modifier;
         }
     };
+<<<<<<< HEAD
 
     return character;
 };
+=======
+};
+
+var createEnemy = function (podition, healthPoints, movintSpeed, attack, images) {
+    var enemy = createLivingBeing(position, healthPoints, movingSpeed, attack, images);
+    enemy.move = function (character, modifier) {
+        if ((enemy.position.x - character.position.x) > 0) {
+            enemy.position.x -= enemy.movingSpeed * modifier;
+        }
+        if ((enemy.position.x - character.position.x) < 0) {
+            enemy.position.x += enemy.movingSpeed * modifier;
+        }
+        if ((enemy.position.y - character.position.y) > 0) {
+            enemy.position.y -= enemy.movingSpeed * modifier;
+        }
+        if ((enemy.position.y - character.position.y) < 0) {
+            enemy.position.y += enemy.movingSpeed * modifier;
+        }
+    }
+}
+>>>>>>> origin/master
