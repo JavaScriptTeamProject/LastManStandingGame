@@ -8,6 +8,15 @@ var initializeCharacter = function (x, y, healthPoints, movingSpeed, damage, att
     return character;
 };
 
+var initializeEnemy = function (x, y, healthPoints, movingSpeed, damage, attackSpeed, images) {
+    var position = new Position(x, y);
+    var attack = new Attack(damage, attackSpeed);
+
+    var images = preloadImages(images);
+    var enemy = new createEnemy(position, healthPoints, movingSpeed, attack, images);
+    return enemy;
+};
+
 var preloadImages = function (images) {
     var loaded = [];
 
@@ -23,18 +32,20 @@ var preloadImages = function (images) {
 };
 
 // 'then' should be passed as Date.now()
-var run = function (objects, ctx, keysDown, then) {
+var run = function (character, enemies, ctx, keysDown, then) {
     var now = Date.now();
     var delta = now - then;
 
     ctx.clearRect(0, 0, 512, 512);
-    for (var i = 0; i < objects.length; i++) {
-        objects[i].move(keysDown, delta / 1000);
-        objects[i].draw(ctx);
+    character.move(keysDown, delta / 1000);
+    character.draw(ctx);
+    for (var i = 0; i < enemies.length; i++) {
+        enemies[i].move(character, delta / 1000);
+        enemies[i].draw(ctx);
     }
 
     then = now;
     requestAnimationFrame(function () {
-        run(objects, ctx, keysDown, then);
+        run(character, enemies, ctx, keysDown, then);
     });
 };

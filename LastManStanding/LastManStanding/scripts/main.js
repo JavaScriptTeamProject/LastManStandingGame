@@ -20,7 +20,7 @@ window.onload = function () {
         delete keysDown[e.keyCode];
     }, false);
 
-    var objects = [];
+    var enemies = [];
     var heroImages = [
         '../images/hero/hero_down_one.png',
         '../images/hero/hero_down_two.png',
@@ -35,10 +35,26 @@ window.onload = function () {
         '../images/hero/hero_up_two.png',
         '../images/hero/hero_up_three.png'
     ];
+
+    var enemyImages = [
+        '../images/enemy/enemy_down_one.png',
+        '../images/enemy/enemy_down_two.png',
+        '../images/enemy/enemy_down_three.png',
+        '../images/enemy/enemy_left_one.png',
+        '../images/enemy/enemy_left_two.png',
+        '../images/enemy/enemy_left_three.png',
+        '../images/enemy/enemy_right_one.png',
+        '../images/enemy/enemy_right_two.png',
+        '../images/enemy/enemy_right_three.png',
+        '../images/enemy/enemy_up_one.png',
+        '../images/enemy/enemy_up_two.png',
+        '../images/enemy/enemy_up_three.png'
+    ];
     var character = initializeCharacter(canvas.width / 2, canvas.height / 2, 100, 250, 10, 1.5, heroImages);
-    objects.push(character);
-    ctx.drawImage(character.images[0], 50, 50);
-    run(objects, ctx, keysDown, Date.now());
+    var enemy = initializeEnemy(0, 0, 100, 40, 10, 1.5, enemyImages);
+    enemies.push(character);
+    enemies.push(enemy);
+    run(character, enemies, ctx, keysDown, Date.now());
 
     var paper = Raphael('svg-container', 512, 512);
     paper.image('../images/terain_grass.png', 0, 0, 512, 512);
