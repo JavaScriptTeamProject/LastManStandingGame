@@ -57,8 +57,31 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\background.png" />
-    <Content Include="images\hero.png" />
+    <Content Include="images\enemy\enemy_down_one.png" />
+    <Content Include="images\enemy\enemy_down_three.png" />
+    <Content Include="images\enemy\enemy_down_two.png" />
+    <Content Include="images\enemy\enemy_left_one.png" />
+    <Content Include="images\enemy\enemy_left_three.png" />
+    <Content Include="images\enemy\enemy_left_two.png" />
+    <Content Include="images\enemy\enemy_right_one.png" />
+    <Content Include="images\enemy\enemy_right_three.png" />
+    <Content Include="images\enemy\enemy_right_two.png" />
+    <Content Include="images\enemy\enemy_up_one.png" />
+    <Content Include="images\enemy\enemy_up_three.png" />
+    <Content Include="images\enemy\enemy_up_two.png" />
+    <Content Include="images\hero\hero_down_one.png" />
+    <Content Include="images\hero\hero_down_three.png" />
+    <Content Include="images\hero\hero_down_two.png" />
+    <Content Include="images\hero\hero_left_one.png" />
+    <Content Include="images\hero\hero_left_three.png" />
+    <Content Include="images\hero\hero_left_two.png" />
+    <Content Include="images\hero\hero_right_one.png" />
+    <Content Include="images\hero\hero_right_three.png" />
+    <Content Include="images\hero\hero_right_two.png" />
+    <Content Include="images\hero\hero_up_one.png" />
+    <Content Include="images\hero\hero_up_three.png" />
+    <Content Include="images\hero\hero_up_two.png" />
+    <Content Include="images\terain_grass.png" />
     <Content Include="LastManStandingGame.html" />
     <Content Include="scripts\engine.js" />
     <Content Include="scripts\objects.js" />

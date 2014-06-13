@@ -18,14 +18,14 @@ var createLivingBeing = function (position, healthPoints, movingSpeed, attack, i
         images: images,
         imageIndex: 0,
         draw: function (ctx) {
-            ctx.drawImage(this.images[this.imageIndex], this.x, this.y);
+            ctx.drawImage(this.images[this.imageIndex], this.position.x, this.position.y);
         }
     }
 
     return livingBeing;
 };
 
-var Character = function (position, healthPoints, movingSpeed, attack, images) {
+var createCharacter = function (position, healthPoints, movingSpeed, attack, images) {
     var character = createLivingBeing(position, healthPoints, movingSpeed, attack, images);
     character.move = function (keysDown, modifier) {
         if (37 in keysDown) { // The player is moving left
@@ -44,4 +44,6 @@ var Character = function (position, healthPoints, movingSpeed, attack, images) {
             this.position.y += this.movingSpeed * modifier;
         }
     };
+
+    return character;
 };
