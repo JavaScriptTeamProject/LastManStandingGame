@@ -58,4 +58,16 @@ window.onload = function () {
 
     var paper = Raphael('svg-container', 512, 512);
     paper.image('../images/terain_grass.png', 0, 0, 512, 512);
+
+    function sleep(milliSeconds){
+        var startTime = new Date().getTime();
+        while (new Date().getTime() < startTime + milliSeconds);
+    }
+
+    canvas.onmouseout = function () {
+        sleep(600000);
+    }
+    canvas.onmousein = function () {
+        sleep(1);
+    }
 }
