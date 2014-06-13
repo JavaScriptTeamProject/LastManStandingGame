@@ -44,11 +44,8 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
             this.position.y += this.movingSpeed * modifier;
         }
     };
-<<<<<<< HEAD
 
     return character;
-};
-=======
 };
 
 var createEnemy = function (podition, healthPoints, movintSpeed, attack, images) {
@@ -68,4 +65,3 @@ var createEnemy = function (podition, healthPoints, movintSpeed, attack, images)
         }
     }
 }
->>>>>>> origin/master
