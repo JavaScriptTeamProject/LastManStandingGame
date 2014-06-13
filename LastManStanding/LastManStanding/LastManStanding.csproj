@@ -57,12 +57,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="scripts\background.js" />
+    <Content Include="LastManStandingGame.html" />
+    <Content Include="scripts\objects.js" />
+    <Content Include="scripts\main.js" />
+    <Content Include="scripts\spawner.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

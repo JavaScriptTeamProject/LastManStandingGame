@@ -1,0 +1,6 @@
+F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastManStanding\LastManStanding\bin\LastManStanding.dll.config
+F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastManStanding\LastManStanding\bin\LastManStanding.dll
+F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastManStanding\LastManStanding\bin\LastManStanding.pdb
+F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastManStanding\LastManStanding\obj\Debug\LastManStanding.csprojResolveAssemblyReference.cache
+F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastManStanding\LastManStanding\obj\Debug\LastManStanding.dll
+F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastManStanding\LastManStanding\obj\Debug\LastManStanding.pdb
