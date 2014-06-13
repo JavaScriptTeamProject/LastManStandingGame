@@ -9,19 +9,25 @@ var Attack = function (damage, speed) {
 };
 
 
-var LivingBeing = function (position, healthPoints, movingSpeed, attack, images) {
-    this.position = position;
-    this.hp = healthPoints;
-    this.movingSpeed = movingSpeed;
-    this.attack = attack;
-    this.images = images;
-    this.imageIndex = 0;
-
-    this.draw = function (ctx) {
-        ctx.drawImage(this.images[this.imageIndex], this.x, this.y)
+var createLivingBeing = function (position, healthPoints, movingSpeed, attack, images) {
+    var livingBeing = {
+        position: position,
+        hp: healthPoints,
+        movingSpeed: movingSpeed,
+        attack: attack,
+        images: images,
+        imageIndex: 0,
+        draw: function (ctx) {
+            ctx.drawImage(this.images[this.imageIndex], this.x, this.y);
+        }
     }
 
-    this.move = function (keysDown, modifier) {
+    return livingBeing;
+};
+
+var Character = function (position, healthPoints, movingSpeed, attack, images) {
+    var character = createLivingBeing(position, healthPoints, movingSpeed, attack, images);
+    character.move = function (keysDown, modifier) {
         if (37 in keysDown) { // The player is moving left
             this.position.x -= this.movingSpeed * modifier;
         }
@@ -37,5 +43,5 @@ var LivingBeing = function (position, healthPoints, movingSpeed, attack, images)
         if (40 in keysDown) { // The player is moving down
             this.position.y += this.movingSpeed * modifier;
         }
-    }
+    };
 };

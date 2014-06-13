@@ -22,6 +22,8 @@ var preloadImages = function (images) {
     return loaded;
 };
 
-var run = function () {
+// 'then' should be passed as Date.now()
+var run = function (objects, ctx, then) {
+    var now = Date.now();
 
 };
