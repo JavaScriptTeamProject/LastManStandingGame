@@ -61,6 +61,6 @@ window.onload = function () {
 
     var gameScreen = document.getElementsByTagName('svg');
     gameScreen.addEventListener('onmouseout', function (e) {
-        window.alert('Mouse left game field!')
+        window.alert('Mouse left the game field!')
     });
 }
