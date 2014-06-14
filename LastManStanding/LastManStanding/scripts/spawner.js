@@ -1,12 +1,13 @@
-//We make different spawn functions, because the different beings have 
-//different additional modifiers like shooting and spawn speed modifier.
+var spawnEnemy = function () {
+    var spawnPositions = [
+        [Position.x = 0, Position.y = 0],
+        [Position.x = 0, Position.y = 640],
+        [Position.x = 640, Position.y = 640],
+        [Position.x = 640, Position.y = 0]
+    ];
+    var positionIndex = Math.floor((Math.random() * 4) + 0);
 
-window.SpawnHero = function() {
-	//TO DO
+    var enemy = initializeEnemy(spawnPositions[positionIndex][0], spawnPositions[positionIndex][1], 100, 40, 10, 1.5);
 
-	//I think we should implement the shooting here.
+    return enemy;
 }
-
-window.EnemySpawn = function() {
-	//TO DO
-};

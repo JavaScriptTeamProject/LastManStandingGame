@@ -10,9 +10,9 @@ window.onload = function () {
     var enemies = [];
 
     var character = initializeCharacter(canvas.width / 2, canvas.height / 2, 100, 250, 10, 1.5);
-    var enemy = initializeEnemy(0, 0, 100, 40, 10, 1.5);
-    enemies.push(character);
-    enemies.push(enemy);
+    for (var i = 0; i < 4; i++) { //To Do!
+        setInterval(enemies.push(spawnEnemy()), 3000);
+    }
 
     run(character, enemies, ctx, canvas, keysDown, Date.now());
 };
