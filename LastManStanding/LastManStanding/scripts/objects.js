@@ -77,19 +77,18 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
         shot.move = function (modifier) {
             if ((shot.startPosition.x - shot.targetPosition.x) > 0) {
                 shot.currPosition.x -= shot.speed.x * modifier;
-                
             }
 
             if ((shot.startPosition.x - shot.targetPosition.x) < 0) {
-                this.currPosition.x += this.speed.x * modifier;
+                shot.currPosition.x += shot.speed.x * modifier;
             }
 
             if ((shot.startPosition.y - shot.targetPosition.y) > 0) {
-                this.currPosition.y -= this.speed.y * modifier;
+                shot.currPosition.y -= shot.speed.y * modifier;
             }
 
             if ((shot.startPosition.y - shot.targetPosition.y) < 0) {
-                this.currPosition.y += this.speed.y * modifier;
+                shot.currPosition.y += shot.speed.y * modifier;
             }
         }
 

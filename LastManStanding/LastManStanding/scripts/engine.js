@@ -104,7 +104,7 @@ var preloadImages = function (images) {
     return loaded;
 };
 
-var updateShots = function (character, ctx, canvas, modifier) {
+var updateShots = function (character, enemies, ctx, canvas, modifier) {
     for (var i = 0; i < character.shots.length; i++) {
         var currShot = character.shots[i];
 
@@ -115,6 +115,21 @@ var updateShots = function (character, ctx, canvas, modifier) {
                 || (currShot.currPosition.y < 0 || currShot.currPosition.y > canvas.height)) {
             character.shots.splice(i, 1);
         }
+
+        // Check if shots hit enemy
+        for (var j = 0; j < enemies.length; j++) {
+            if (currShot.currPosition.x <= enemies[j].position.x + character.attackImage.width + 25
+                    && enemies[j].position.x <= currShot.currPosition.x + character.attackImage.width
+                    && currShot.currPosition.y <= enemies[j].position.y + character.attackImage.height + 30
+                    && enemies[j].position.y <= currShot.currPosition.y + character.attackImage.height) {
+                enemies[j].hp -= currShot.damage;
+                character.shots.splice(i, 1);
+            }
+
+            if (enemies[j].hp <= 0) {
+                enemies.splice(j, 1);
+            }
+        }
     }
 };
 
@@ -122,7 +137,7 @@ var update = function (character, enemies, ctx, canvas, keysDown, modifier, elap
     ifOutField(character, canvas);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    updateShots(character, ctx, canvas, modifier);
+    updateShots(character, enemies, ctx, canvas, modifier);
 
     if (character.hp >= 1) {
         character.move(keysDown, modifier);
