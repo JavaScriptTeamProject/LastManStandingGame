@@ -21,16 +21,19 @@ var initializeGameScreen = function (canvasContainer, svgContainer, width, heigh
     score.style.position = 'absolute';
     score.style.top = '660px';
     score.style.left = '100px';
+    document.body.appendChild(score);
 
     var timeLived = document.createElement('div');
-    timeLived.id = 'timeLived';
+    timeLived.id = 'timeSurvivedDiv';
     timeLived.style.position = 'absolute';
-    timeLived.left = '200px';
+    timeLived.style.top = '660px';
+    timeLived.style.left = '250px';
+    document.body.appendChild(timeLived);
 };
 
 var endScreen = function () {
     paper.image('../images/end_screen.png', 0, 0, 640, 640);
-    windwow.cancelAnimationFrame();
+    window.cancelAnimationFrame(); // Not working
 }
 
 var initializeCharacter = function (x, y, healthPoints, movingSpeed, damage, attackSpeed) {
@@ -104,6 +107,8 @@ var preloadImages = function (images) {
     return loaded;
 };
 
+var score = 0;
+var elapsedForScore = 0;
 var updateShots = function (character, enemies, ctx, canvas, modifier) {
     for (var i = 0; i < character.shots.length; i++) {
         var currShot = character.shots[i];
@@ -128,6 +133,7 @@ var updateShots = function (character, enemies, ctx, canvas, modifier) {
 
             if (enemies[j].hp <= 0) {
                 enemies.splice(j, 1);
+                score++;
             }
         }
     }
@@ -154,6 +160,8 @@ var update = function (character, enemies, ctx, canvas, keysDown, modifier, elap
     }
 
     document.getElementById('hpDiv').innerHTML = 'HP: ' + Math.ceil(character.hp);
+    document.getElementById('scoreDiv').innerHTML = 'Score: ' + score;
+    document.getElementById('timeSurvivedDiv').innerHTML = 'Time survived: ' + (elapsedForScore / 60000).toFixed(2); // Not working correctly
 };
 
 // 'then' should be passed as Date.now(), 'elapsed' as 0
@@ -161,6 +169,7 @@ var run = function (character, enemies, ctx, canvas, keysDown, then, elapsed, sp
     var now = Date.now();
     var delta = now - then;
     elapsed += delta;
+    elapsedForScore += delta;
 
     if (!isPaused) {
         update(character, enemies, ctx, canvas, keysDown, delta / 1000);
