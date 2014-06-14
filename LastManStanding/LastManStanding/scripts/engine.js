@@ -134,15 +134,18 @@ var run = function (character, enemies, ctx, canvas, keysDown, then, elapsed, sp
 };
 
 var ifOutField = function (character, canvas) { //TO FINISH THE BUG!
-    while (character.position.x >= canvas.width - 26 ||
-    	character.position.y >= canvas.height - 33) {
+    while (character.position.x >= canvas.width - 26) {
         character.position.x--;
+    }
+    while (character.position.y >= canvas.height - 33) {
         character.position.y--;
     }
-    while (character.position.x <= 0 ||
-        character.position.y <= 0) {
+    while (character.position.x <= 0) {
         character.position.x++;
+    }
+    while (character.position.y <= 0) {
         character.position.y++;
+
     }
 };
 

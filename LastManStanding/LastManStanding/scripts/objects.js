@@ -77,6 +77,7 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
         shot.move = function (modifier) {
             if ((shot.startPosition.x - shot.targetPosition.x) > 0) {
                 shot.currPosition.x -= shot.speed.x * modifier;
+                
             }
 
             if ((shot.startPosition.x - shot.targetPosition.x) < 0) {
@@ -93,6 +94,8 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
         }
 
         this.shots.push(shot);
+
+        
     };
 
     return character;
