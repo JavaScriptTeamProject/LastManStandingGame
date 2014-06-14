@@ -69,6 +69,7 @@
     <Content Include="images\enemy\enemy_up_one.png" />
     <Content Include="images\enemy\enemy_up_three.png" />
     <Content Include="images\enemy\enemy_up_two.png" />
+    <Content Include="images\fireball.png" />
     <Content Include="images\hero\hero_down_one.png" />
     <Content Include="images\hero\hero_down_three.png" />
     <Content Include="images\hero\hero_down_two.png" />

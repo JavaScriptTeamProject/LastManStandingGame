@@ -30,8 +30,17 @@ var initializeCharacter = function (x, y, healthPoints, movingSpeed, damage, att
         '../images/hero/hero_up_three.png'
     ];
 
+    var heroAttackImage = new Image();
+    heroAttackImage.src = '../images/fireball.png';
+
     var images = preloadImages(heroImages);
-    var character = new createCharacter(position, healthPoints, movingSpeed, attack, images);
+    var character = new createCharacter(position, healthPoints, movingSpeed, attack, images, heroAttackImage);
+
+    // Handle firing shots
+    document.querySelector('#canvas-container').addEventListener('mousedown', function (ev) {
+        character.fire(ev.layerX, ev.layerY);
+    });
+
     return character;
 };
 
@@ -73,8 +82,25 @@ var preloadImages = function (images) {
     return loaded;
 };
 
+var updateShots = function (character, ctx, canvas, modifier) {
+    for (var i = 0; i < character.shots.length; i++) {
+        var currShot = character.shots[i];
+
+        currShot.draw(ctx);
+        currShot.move(modifier);
+
+        if ((currShot.currPosition.x < 0 || currShot.currPosition.x > canvas.width)
+                || (currShot.currPosition.y < 0 || currShot.currPosition.y > canvas.height)) {
+            character.shots.splice(i, 1);
+        }
+    }
+};
+
 var update = function (character, enemies, ctx, canvas, keysDown, modifier) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    updateShots(character, ctx, canvas, modifier);
+
     character.move(keysDown, modifier);
     character.draw(ctx);
 
@@ -114,10 +140,10 @@ window.addEventListener('keydown', function (e) {
 // Handle keyboard controls
 var keysDown = {};
 
-addEventListener("keydown", function (e) {
+window.addEventListener("keydown", function (e) {
     keysDown[e.keyCode] = true;
-}, false);
+});
 
-addEventListener("keyup", function (e) {
+window.addEventListener("keyup", function (e) {
     delete keysDown[e.keyCode];
-}, false);
+});

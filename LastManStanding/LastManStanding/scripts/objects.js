@@ -25,8 +25,12 @@ var createLivingBeing = function (position, healthPoints, movingSpeed, attack, i
     return livingBeing;
 };
 
-var createCharacter = function (position, healthPoints, movingSpeed, attack, images) {
+var createCharacter = function (position, healthPoints, movingSpeed, attack, images, attackImage) {
     var character = createLivingBeing(position, healthPoints, movingSpeed, attack, images);
+
+    character.attackImage = attackImage;
+    character.shots = [];
+
     character.move = function (keysDown, modifier) {
         if (37 in keysDown) { // The player is moving left
             this.position.x -= this.movingSpeed * modifier;
@@ -45,32 +49,81 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
         }
     };
 
+    character.fire = function (targetPositionX, targetPositionY) {
+        var shot = {
+            startPosition: new Position(character.position.x + images[0].width / 2,
+                character.position.y + images[0].height / 2),
+            currPosition: new Position(character.position.x + images[0].width / 2,
+                character.position.y + images[0].height / 2),
+            targetPosition: new Position(targetPositionX, targetPositionY),
+        };
+
+        shot.delta = {
+            x: Math.abs(shot.startPosition.x - shot.targetPosition.x),
+            y: Math.abs(shot.startPosition.y - shot.targetPosition.y)
+        };
+
+        shot.damage = this.attack.damage,
+        shot.speed = {
+            x: this.attack.speed / Math.sqrt(shot.delta.x * shot.delta.x + shot.delta.y * shot.delta.y) * shot.delta.x,
+            y: this.attack.speed / Math.sqrt(shot.delta.x * shot.delta.x + shot.delta.y * shot.delta.y) * shot.delta.y
+        };
+
+        shot.draw = function (ctx) {
+            ctx.drawImage(character.attackImage, shot.currPosition.x, shot.currPosition.y,
+                character.attackImage.width, character.attackImage.height);
+        };
+
+        shot.move = function (modifier) {
+            if ((shot.startPosition.x - shot.targetPosition.x) > 0) {
+                shot.currPosition.x -= shot.speed.x * modifier;
+            }
+
+            if ((shot.startPosition.x - shot.targetPosition.x) < 0) {
+                this.currPosition.x += this.speed.x * modifier;
+            }
+
+            if ((shot.startPosition.y - shot.targetPosition.y) > 0) {
+                this.currPosition.y -= this.speed.y * modifier;
+            }
+
+            if ((shot.startPosition.y - shot.targetPosition.y) < 0) {
+                this.currPosition.y += this.speed.y * modifier;
+            }
+        }
+
+        this.shots.push(shot);
+    };
+
     return character;
 };
 
 var createEnemy = function (position, healthPoints, movingSpeed, attack, images) {
     var enemy = createLivingBeing(position, healthPoints, movingSpeed, attack, images);
     enemy.move = function (character, modifier) {
-        if ((enemy.position.x - character.position.x) > 0) {
-            enemy.position.x -= enemy.movingSpeed * modifier;
+        if ((this.position.x - character.position.x) > 0) {
+            this.position.x -= this.movingSpeed * modifier;
         }
-        if ((enemy.position.x - character.position.x) < 0) {
-            enemy.position.x += enemy.movingSpeed * modifier;
+
+        if ((this.position.x - character.position.x) < 0) {
+            this.position.x += this.movingSpeed * modifier;
         }
-        if ((enemy.position.y - character.position.y) > 0) {
-            enemy.position.y -= enemy.movingSpeed * modifier;
+
+        if ((this.position.y - character.position.y) > 0) {
+            this.position.y -= this.movingSpeed * modifier;
         }
-        if ((enemy.position.y - character.position.y) < 0) {
-            enemy.position.y += enemy.movingSpeed * modifier;
+
+        if ((this.position.y - character.position.y) < 0) {
+            this.position.y += this.movingSpeed * modifier;
         }
     }
 
     enemy.attackHero = function (character) {
-        if (character.position.x <= (enemy.position.x + 28)
-            && enemy.position.x <= (character.position.x + 28)
-            && character.position.y <= (enemy.position.y + 34)
-            && enemy.position.y <= (character.position.y + 34)) {
-            character.hp -= enemy.attack.damage;
+        if (character.position.x <= (this.position.x + 28)
+            && this.position.x <= (character.position.x + 28)
+            && character.position.y <= (this.position.y + 34)
+            && this.position.y <= (character.position.y + 34)) {
+            character.hp -= this.attack.damage;
         }
     }
 
