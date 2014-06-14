@@ -74,6 +74,7 @@ var preloadImages = function (images) {
 };
 
 var update = function (character, enemies, ctx, canvas, keysDown, modifier) {
+    ifOutField(character, canvas);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     character.move(keysDown, modifier);
     character.draw(ctx);
@@ -97,6 +98,19 @@ var run = function (character, enemies, ctx, canvas, keysDown, then) {
     requestAnimationFrame(function () {
         run(character, enemies, ctx, canvas, keysDown, then);
     });
+};
+
+var ifOutField = function (character, canvas) { //TO FINISH THE BUG!
+    while (character.position.x >= canvas.width - 26 ||
+    	character.position.y >= canvas.height - 33) {
+        character.position.x--;
+        character.position.y--;
+    }
+    while (character.position.x <= 0 ||
+        character.position.y <= 0) {
+        character.position.x++;
+        character.position.y++;
+    }
 };
 
 var isPaused = false;
