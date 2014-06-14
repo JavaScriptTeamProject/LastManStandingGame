@@ -9,7 +9,29 @@ var initializeGameScreen = function (canvasContainer, svgContainer, width, heigh
 
     paper = Raphael('svg-container', width, height);
     paper.image('../images/terain_grass.png', 0, 0, width, height);
+
+    var hpDiv = document.createElement('div');
+    hpDiv.id = 'hpDiv';
+    hpDiv.style.position = 'absolute';
+    hpDiv.style.top = '660px';
+    document.body.appendChild(hpDiv);
+
+    var score = document.createElement('div');
+    score.id = 'scoreDiv';
+    score.style.position = 'absolute';
+    score.style.top = '660px';
+    score.style.left = '100px';
+
+    var timeLived = document.createElement('div');
+    timeLived.id = 'timeLived';
+    timeLived.style.position = 'absolute';
+    timeLived.left = '200px';
 };
+
+var endScreen = function () {
+    paper.image('../images/end_screen.png', 0, 0, 640, 640);
+    windwow.cancelAnimationFrame();
+}
 
 var initializeCharacter = function (x, y, healthPoints, movingSpeed, damage, attackSpeed) {
     var position = new Position(x, y);
@@ -40,12 +62,6 @@ var initializeCharacter = function (x, y, healthPoints, movingSpeed, damage, att
     document.querySelector('#canvas-container').addEventListener('mousedown', function (ev) {
         character.fire(ev.layerX, ev.layerY);
     });
-
-    var hpDiv = document.createElement('div');
-    hpDiv.id = 'hpDiv';
-    hpDiv.style.position = 'absolute';
-    hpDiv.style.top = '660px';
-    document.body.appendChild(hpDiv);
 
     return character;
 };
@@ -108,9 +124,12 @@ var update = function (character, enemies, ctx, canvas, keysDown, modifier, elap
 
     updateShots(character, ctx, canvas, modifier);
 
-    if (character.hp >= 0) {
+    if (character.hp >= 1) {
         character.move(keysDown, modifier);
         character.draw(ctx);
+    }
+    else {
+        endScreen();
     }
 
     for (var i = 0; i < enemies.length; i++) {

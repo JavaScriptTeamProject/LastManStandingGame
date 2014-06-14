@@ -93,9 +93,7 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
             }
         }
 
-        this.shots.push(shot);
-
-        
+        this.shots.push(shot);        
     };
 
     return character;
