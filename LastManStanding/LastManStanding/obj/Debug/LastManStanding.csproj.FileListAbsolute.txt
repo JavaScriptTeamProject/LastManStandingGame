@@ -4,3 +4,9 @@ F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastM
 F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastManStanding\LastManStanding\obj\Debug\LastManStanding.csprojResolveAssemblyReference.cache
 F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastManStanding\LastManStanding\obj\Debug\LastManStanding.dll
 F:\OLD_DISK_D\New Folder\MoviesAndVS\VSProjects\Github\LastManStandingGame\LastManStanding\LastManStanding\obj\Debug\LastManStanding.pdb
+D:\TELERIK\Екипна работа\JavaScript UI and DOM\trunk\LastManStanding\LastManStanding\bin\LastManStanding.dll.config
+D:\TELERIK\Екипна работа\JavaScript UI and DOM\trunk\LastManStanding\LastManStanding\bin\LastManStanding.dll
+D:\TELERIK\Екипна работа\JavaScript UI and DOM\trunk\LastManStanding\LastManStanding\bin\LastManStanding.pdb
+D:\TELERIK\Екипна работа\JavaScript UI and DOM\trunk\LastManStanding\LastManStanding\obj\Debug\LastManStanding.csprojResolveAssemblyReference.cache
+D:\TELERIK\Екипна работа\JavaScript UI and DOM\trunk\LastManStanding\LastManStanding\obj\Debug\LastManStanding.dll
+D:\TELERIK\Екипна работа\JavaScript UI and DOM\trunk\LastManStanding\LastManStanding\obj\Debug\LastManStanding.pdb
