@@ -36,7 +36,7 @@ var run = function (character, enemies, ctx, keysDown, then) {
     var now = Date.now();
     var delta = now - then;
 
-    ctx.clearRect(0, 0, 512, 512);
+    ctx.clearRect(0, 0, 640, 640); //Hardcoded width and height.
     character.move(keysDown, delta / 1000);
     character.draw(ctx);
     for (var i = 0; i < enemies.length; i++) {

@@ -56,11 +56,11 @@ window.onload = function () {
     enemies.push(enemy);
     run(character, enemies, ctx, keysDown, Date.now());
 
-    var paper = Raphael('svg-container', 512, 512);
-    paper.image('../images/terain_grass.png', 0, 0, 512, 512);   
+    var paper = Raphael('svg-container', canvas.width, canvas.height);  //Shouldn't be same as the canvas???
+    paper.image('../images/terain_grass.png', 0, 0, paper.width, paper.width);
 
-    var gameScreen = document.getElementsByTagName('svg');
-    gameScreen.addEventListener('onmouseout', function (e) {
+    var gameScreen = document.getElementById('svg-container');
+    gameScreen.addEventListener('mouseout', function (e) {
         window.alert('Mouse left the game field!')
     });
 }
