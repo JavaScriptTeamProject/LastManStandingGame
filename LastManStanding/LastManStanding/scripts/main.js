@@ -17,7 +17,7 @@ window.onload = function () {
     var character = initializeCharacter(canvas.width / 2, canvas.height / 2,
         healthPoints, movingSpeed, damage, attackSpeed);
 
-    var enemy = initializeEnemy(0, 0, 80, 40, 10, 1.5);
+    var enemy = initializeEnemy(0, 0, 80, 40, 1, 1.5);
     enemies.push(enemy);
 
     run(character, enemies, ctx, canvas, keysDown, Date.now(), 0, 4000, 0.01);

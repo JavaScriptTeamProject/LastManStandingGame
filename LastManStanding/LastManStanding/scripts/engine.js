@@ -41,6 +41,12 @@ var initializeCharacter = function (x, y, healthPoints, movingSpeed, damage, att
         character.fire(ev.layerX, ev.layerY);
     });
 
+    var hpDiv = document.createElement('div');
+    hpDiv.id = 'hpDiv';
+    hpDiv.style.position = 'absolute';
+    hpDiv.style.top = '660px';
+    document.body.appendChild(hpDiv);
+
     return character;
 };
 
@@ -102,13 +108,18 @@ var update = function (character, enemies, ctx, canvas, keysDown, modifier, elap
 
     updateShots(character, ctx, canvas, modifier);
 
-    character.move(keysDown, modifier);
-    character.draw(ctx);
+    if (character.hp >= 0) {
+        character.move(keysDown, modifier);
+        character.draw(ctx);
+    }
 
     for (var i = 0; i < enemies.length; i++) {
         enemies[i].move(character, modifier);
         enemies[i].draw(ctx);
+        enemies[i].attackHero(character);
     }
+
+    document.getElementById('hpDiv').innerHTML = 'HP: ' + Math.ceil(character.hp);
 };
 
 // 'then' should be passed as Date.now(), 'elapsed' as 0
