@@ -19,7 +19,6 @@ window.onload = function () {
 
     var enemy = initializeEnemy(0, 0, 80, 40, 10, 1.5);
     enemies.push(enemy);
-    setInterval(enemies.push(spawnEnemy()), 500);
 
     run(character, enemies, ctx, canvas, keysDown, Date.now(), 0, 4000, 0.01);
 };
