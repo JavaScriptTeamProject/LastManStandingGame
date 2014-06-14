@@ -96,7 +96,8 @@ var updateShots = function (character, ctx, canvas, modifier) {
     }
 };
 
-var update = function (character, enemies, ctx, canvas, keysDown, modifier) {
+var update = function (character, enemies, ctx, canvas, keysDown, modifier, elapsed) {
+    ifOutField(character, canvas);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     updateShots(character, ctx, canvas, modifier);
@@ -110,19 +111,39 @@ var update = function (character, enemies, ctx, canvas, keysDown, modifier) {
     }
 };
 
-// 'then' should be passed as Date.now()
-var run = function (character, enemies, ctx, canvas, keysDown, then) {
+// 'then' should be passed as Date.now(), 'elapsed' as 0
+var run = function (character, enemies, ctx, canvas, keysDown, then, elapsed, spawnTimer, spawnRate) {
     var now = Date.now();
     var delta = now - then;
+    elapsed += delta;
 
     if (!isPaused) {
         update(character, enemies, ctx, canvas, keysDown, delta / 1000);
+
+        if (elapsed >= spawnTimer) {
+            enemies.push(spawnEnemy());
+            elapsed -= spawnTimer;
+            spawnTimer -= spawnTimer * spawnRate;
+        }
     }
 
     then = now;
     requestAnimationFrame(function () {
-        run(character, enemies, ctx, canvas, keysDown, then);
+        run(character, enemies, ctx, canvas, keysDown, then, elapsed, spawnTimer, spawnRate);
     });
+};
+
+var ifOutField = function (character, canvas) { //TO FINISH THE BUG!
+    while (character.position.x >= canvas.width - 26 ||
+    	character.position.y >= canvas.height - 33) {
+        character.position.x--;
+        character.position.y--;
+    }
+    while (character.position.x <= 0 ||
+        character.position.y <= 0) {
+        character.position.x++;
+        character.position.y++;
+    }
 };
 
 var isPaused = false;
