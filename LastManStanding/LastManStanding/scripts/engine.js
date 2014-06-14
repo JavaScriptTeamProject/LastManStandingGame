@@ -89,17 +89,8 @@ var run = function (character, enemies, ctx, canvas, keysDown, then) {
     var now = Date.now();
     var delta = now - then;
 
-<<<<<<< HEAD
     if (!isPaused) {
         update(character, enemies, ctx, canvas, keysDown, delta / 1000);
-=======
-    ctx.clearRect(0, 0, 640, 640); //Hardcoded width and height.
-    character.move(keysDown, delta / 1000);
-    character.draw(ctx);
-    for (var i = 0; i < enemies.length; i++) {
-        enemies[i].move(character, delta / 1000);
-        enemies[i].draw(ctx);
->>>>>>> origin/master
     }
 
     then = now;
