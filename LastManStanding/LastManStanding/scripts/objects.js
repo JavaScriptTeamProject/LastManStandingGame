@@ -70,7 +70,7 @@ var createEnemy = function (position, healthPoints, movingSpeed, attack, images)
             && enemy.position.x <= (character.position.x + 28)
             && character.position.y <= (enemy.position.y + 34)
             && enemy.position.y <= (character.position.y + 34)) {
-            character.hp -= enemy.attack.demege;
+            character.hp -= enemy.attack.damage;
         }
     }
 
