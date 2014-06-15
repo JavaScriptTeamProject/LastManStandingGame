@@ -8,7 +8,13 @@ var spawnEnemy = function () {
 
     var positionIndex = Math.floor((Math.random() * 4));
 
-    var enemy = initializeEnemy(spawnPositions[positionIndex][0], spawnPositions[positionIndex][1], 80, 40, 1, 1.5);
+    var healthPoint = 80,
+        movementSpeed = 40,
+        attackDamage = 1,
+        attackSpeed = 1;
+
+    var enemy = initializeEnemy(spawnPositions[positionIndex][0], spawnPositions[positionIndex][1],
+        healthPoint, movementSpeed, attackDamage, attackSpeed);
 
     return enemy;
 }

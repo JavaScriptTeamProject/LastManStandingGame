@@ -24,6 +24,7 @@ var initializeGameScreen = function (canvasContainer, svgContainer, width, heigh
     document.body.appendChild(score);
 
     var timeLived = document.createElement('div');
+
     timeLived.id = 'timeSurvivedDiv';
     timeLived.style.position = 'absolute';
     timeLived.style.top = '660px';
@@ -33,7 +34,7 @@ var initializeGameScreen = function (canvasContainer, svgContainer, width, heigh
 
 var endScreen = function () {
     paper.image('../images/end_screen.png', 0, 0, 640, 640);
-    window.cancelAnimationFrame(); // Not working
+    stopAnimation = true;
 }
 
 var initializeCharacter = function (x, y, healthPoints, movingSpeed, damage, attackSpeed) {
@@ -108,7 +109,6 @@ var preloadImages = function (images) {
 };
 
 var score = 0;
-var elapsedForScore = 0;
 var updateShots = function (character, enemies, ctx, canvas, modifier) {
     for (var i = 0; i < character.shots.length; i++) {
         var currShot = character.shots[i];
@@ -159,11 +159,12 @@ var update = function (character, enemies, ctx, canvas, keysDown, modifier, elap
         enemies[i].attackHero(character);
     }
 
-    document.getElementById('hpDiv').innerHTML = 'HP: ' + Math.ceil(character.hp);
-    document.getElementById('scoreDiv').innerHTML = 'Score: ' + score;
-    document.getElementById('timeSurvivedDiv').innerHTML = 'Time survived: ' + (elapsedForScore / 60000).toFixed(2); // Not working correctly
+    updateInfo(character);
 };
 
+var request;
+var stopAnimation = false;
+var elapsedForScore = 0;
 // 'then' should be passed as Date.now(), 'elapsed' as 0
 var run = function (character, enemies, ctx, canvas, keysDown, then, elapsed, spawnTimer, spawnRate) {
     var now = Date.now();
@@ -178,16 +179,39 @@ var run = function (character, enemies, ctx, canvas, keysDown, then, elapsed, sp
             enemies.push(spawnEnemy());
             elapsed -= spawnTimer;
             spawnTimer -= spawnTimer * spawnRate;
+
+            if (spawnTimer < 600) {
+                spawnTimer = 600; // min time for spawning
+            }
         }
     }
 
     then = now;
-    requestAnimationFrame(function () {
+    request = requestAnimationFrame(function () {
         run(character, enemies, ctx, canvas, keysDown, then, elapsed, spawnTimer, spawnRate);
     });
+
+    if (stopAnimation) {
+        cancelAnimationFrame(request);
+    }
 };
 
-var ifOutField = function (character, canvas) { //TO FINISH THE BUG!
+var getTimeSurvived = function (elapsedForScore) {
+    var seconds = elapsedForScore / 1000;
+    var minutes = seconds / 60 < 10 ? '0' + (seconds / 60).toFixed(0) : (seconds / 60).toFixed(0);
+    var secondsLeft = seconds % 60 < 10 ? '0' + (seconds % 60).toFixed(0) : (seconds % 60).toFixed(0);
+
+    var timeSurvived = minutes + ':' + secondsLeft;
+    return timeSurvived;
+};
+
+var updateInfo = function (character) {
+    document.getElementById('hpDiv').innerHTML = 'HP: ' + Math.ceil(character.hp);
+    document.getElementById('scoreDiv').innerHTML = 'Score: ' + score;
+    document.getElementById('timeSurvivedDiv').innerHTML = 'Time survived: ' + getTimeSurvived(elapsedForScore);
+};
+
+var ifOutField = function (character, canvas) {
     if (character.position.x < 0) {
         character.position.x = 0;
     }

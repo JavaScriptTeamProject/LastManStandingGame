@@ -123,7 +123,11 @@ var createEnemy = function (position, healthPoints, movingSpeed, attack, images)
             && this.position.x <= (character.position.x + 28)
             && character.position.y <= (this.position.y + 34)
             && this.position.y <= (character.position.y + 34)) {
-            character.hp -= this.attack.damage;
+            character.hp -= this.attack.damage * this.attack.speed;
+
+            if (character.hp < 0) {
+                character.hp = 0;
+            }
         }
     }
 
