@@ -169,10 +169,11 @@ var elapsedForScore = 0;
 var run = function (character, enemies, ctx, canvas, keysDown, then, elapsed, spawnTimer, spawnRate) {
     var now = Date.now();
     var delta = now - then;
-    elapsed += delta;
-    elapsedForScore += delta;
 
     if (!isPaused) {
+        elapsed += delta;
+        elapsedForScore += delta;
+
         update(character, enemies, ctx, canvas, keysDown, delta / 1000);
 
         if (elapsed >= spawnTimer) {
