@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Last Man Standing</title>
+    <meta charset="utf-8" />
+    <title>The Last Man Standing</title>
     <link href="styles/style.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="svg-container"></div>
-	<div id="canvas-container"></div>
-	<!-- We haven't consider the screen size yet! TO DO! -->
+    <div id="game-container">
+        <div id="game-menu">
+            <ul>
+                <li>
+                    <span class="menu-button" data-info="0">Play</span>
+                </li>
+                <li>
+                    <span class="menu-button" data-info="1">Controls</span>
+                </li>                        
+                <li>
+                    <span class="menu-button" data-info="2">Lore</span>
+                </li>
+                <li>
+                    <span class="menu-button" data-info="3">Credits</span>
+                </li>
+            </ul>
+        </div>
+        <div id="game-info">
+            <div id="controls">
+                <p>To move use the arrows or WASD. To shoot use the left mouse click.</p>
+            </div>
+            <div id="lore">
+                <p>There once was a very lonely wizard. He knew his chances of finding his half were not so good, so he decided to boost them up, by going to a parallel universe in the future, where men are significantly fewer. A bit after his arrival he saw that this was a huge mistake, because a group of space amazons are abducting all men, leaving him in a difficult and dangerous situtation, between women in strong need of male company.</p>
+            </div>
+            <div id="credits">
+                <p>Валентин Генев</p>
+                <p>Никола Божков</p>
+            </div>
+        </div>
+        <div id="svg-container"></div>
+	    <div id="canvas-container"></div>
+        <div id="character-info"></div>
+    </div>
     <script src="scripts/engine.js"></script>
     <script src="scripts/objects.js"></script>
     <script src="scripts/raphael-min.js"></script>
     <script src="scripts/spawner.js"></script>
+    <script src="scripts/jquery-2.1.1.min.js"></script>
+    <script src="scripts/mainMenu.js"></script>
 	<script type="text/javascript" src="scripts/main.js"></script>
 </body>
 </html>

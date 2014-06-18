@@ -10,26 +10,9 @@ var initializeGameScreen = function (canvasContainer, svgContainer, width, heigh
     paper = Raphael('svg-container', width, height);
     paper.image('../images/terain_grass.png', 0, 0, width, height);
 
-    var hpDiv = document.createElement('div');
-    hpDiv.id = 'hpDiv';
-    hpDiv.style.position = 'absolute';
-    hpDiv.style.top = '660px';
-    document.body.appendChild(hpDiv);
-
-    var score = document.createElement('div');
-    score.id = 'scoreDiv';
-    score.style.position = 'absolute';
-    score.style.top = '660px';
-    score.style.left = '100px';
-    document.body.appendChild(score);
-
-    var timeLived = document.createElement('div');
-
-    timeLived.id = 'timeSurvivedDiv';
-    timeLived.style.position = 'absolute';
-    timeLived.style.top = '660px';
-    timeLived.style.left = '250px';
-    document.body.appendChild(timeLived);
+    $('#character-info').append($('<div />').attr('id', 'hp-div'));
+    $('#character-info').append($('<div />').attr('id', 'score-div'));
+    $('#character-info').append($('<div />').attr('id', 'time-survived-div'));
 };
 
 var endScreen = function () {
@@ -199,17 +182,17 @@ var run = function (character, enemies, ctx, canvas, keysDown, then, elapsed, sp
 
 var getTimeSurvived = function (elapsedForScore) {
     var seconds = elapsedForScore / 1000;
-    var minutes = seconds / 60 < 10 ? '0' + (seconds / 60).toFixed(0) : (seconds / 60).toFixed(0);
-    var secondsLeft = seconds % 60 < 10 ? '0' + (seconds % 60).toFixed(0) : (seconds % 60).toFixed(0);
+    var minutes = seconds / 60 < 10 ? '0' + Math.floor((seconds / 60)) : Math.floor((seconds / 60));
+    var secondsLeft = seconds % 60 < 10 ? '0' + Math.floor((seconds % 60)) : Math.floor((seconds % 60));
 
     var timeSurvived = minutes + ':' + secondsLeft;
     return timeSurvived;
 };
 
 var updateInfo = function (character) {
-    document.getElementById('hpDiv').innerHTML = 'HP: ' + Math.ceil(character.hp);
-    document.getElementById('scoreDiv').innerHTML = 'Score: ' + score;
-    document.getElementById('timeSurvivedDiv').innerHTML = 'Time survived: ' + getTimeSurvived(elapsedForScore);
+    $('#hp-div').html('HP: ' + Math.ceil(character.hp));
+    $('#score-div').html('Score: ' + score);
+    $('#time-survived-div').html('Time survived: ' + getTimeSurvived(elapsedForScore));
 };
 
 var ifOutField = function (character, canvas) {

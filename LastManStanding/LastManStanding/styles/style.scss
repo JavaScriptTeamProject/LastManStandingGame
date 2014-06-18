@@ -1,0 +1,84 @@
+$gameScreenSize: 640px;
+$spacing: 15px;
+$fontSize: 15px;
+
+@font-face {
+	font-family: 'press-start';
+	src: url('../fonts/prstart.ttf') format('truetype');
+}
+
+#character-info div {
+    font-size: $fontSize;
+    font-family: 'press-start';
+}
+
+#game-menu, #game-info {
+	position: absolute;
+	width: $gameScreenSize - 250;
+    height: $gameScreenSize - 100;
+	left: 50%;
+	margin-left: -($gameScreenSize - 250) / 2;
+	top: $spacing;
+	background-image: url('../images/menu/menu_background.png');
+	background-size: ($gameScreenSize - 250) ($gameScreenSize - 100);
+	font-family: 'press-start';
+	text-align: center;
+	z-index: 1;
+
+	ul {
+		list-style: none;
+		padding: $spacing;
+		padding-top: $spacing * 3;
+
+		li {
+			margin-bottom: $spacing;
+
+			.menu-button {
+				cursor: pointer;
+			}
+		}
+	}
+
+	div {
+		padding: $spacing * 2;
+
+		font-size: $fontSize;
+	}
+}
+
+#game-container {
+    margin: 0 auto;
+    width: $gameScreenSize + $spacing * 2;
+    height: $gameScreenSize + $spacing * 3 + $fontSize;
+    position: relative;
+    background-color: #aaa;
+	border-radius: 5px;
+}
+
+#svg-container, #canvas-container {
+    position: absolute;
+    margin: $spacing;
+}
+
+#character-info {
+	position: absolute;
+	width: $gameScreenSize;
+	margin: 0 $spacing;
+	bottom: $spacing;
+}
+
+#hp-div, #score-div, #time-survived-div {
+	display: inline-block;
+}
+
+#hp-div {
+}
+
+#score-div {
+    margin-left: $spacing * 2;
+}
+
+#time-survived-div {
+	position: absolute;
+	right: 0;
+}

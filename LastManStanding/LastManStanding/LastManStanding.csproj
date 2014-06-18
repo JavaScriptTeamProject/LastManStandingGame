@@ -82,15 +82,20 @@
     <Content Include="images\hero\hero_up_one.png" />
     <Content Include="images\hero\hero_up_three.png" />
     <Content Include="images\hero\hero_up_two.png" />
+    <Content Include="images\menu\menu_background.png" />
     <Content Include="images\terain_grass.png" />
     <Content Include="LastManStandingGame.html" />
     <Content Include="scripts\engine.js" />
+    <Content Include="scripts\jquery-2.1.1.min.js" />
+    <Content Include="scripts\mainMenu.js" />
     <Content Include="scripts\objects.js" />
     <Content Include="scripts\main.js" />
     <Content Include="scripts\raphael-min.js" />
     <Content Include="scripts\references.js" />
     <Content Include="scripts\spawner.js" />
-    <Content Include="styles\style.css" />
+    <Content Include="styles\style.css">
+      <DependentUpon>style.scss</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.md" />
+    <Content Include="styles\style.scss" />
+    <Content Include="fonts\prstart.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

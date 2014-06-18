@@ -1,5 +1,60 @@
-﻿div {
-    font-weight: bold;
-    font-size: 1.2em;
-    font-family: Consolas;
-}
+@font-face {
+  font-family: 'press-start';
+  src: url("../fonts/prstart.ttf") format("truetype"); }
+
+#character-info div {
+  font-size: 15px;
+  font-family: 'press-start'; }
+
+#game-menu, #game-info {
+  position: absolute;
+  width: 390px;
+  height: 540px;
+  left: 50%;
+  margin-left: -195px;
+  top: 15px;
+  background-image: url("../images/menu/menu_background.png");
+  background-size: 390px 540px;
+  font-family: 'press-start';
+  text-align: center;
+  z-index: 1; }
+  #game-menu ul, #game-info ul {
+    list-style: none;
+    padding: 15px;
+    padding-top: 45px; }
+    #game-menu ul li, #game-info ul li {
+      margin-bottom: 15px; }
+      #game-menu ul li .menu-button, #game-info ul li .menu-button {
+        cursor: pointer; }
+  #game-menu div, #game-info div {
+    padding: 30px;
+    font-size: 15px; }
+
+#game-container {
+  margin: 0 auto;
+  width: 670px;
+  height: 700px;
+  position: relative;
+  background-color: #aaa;
+  border-radius: 5px; }
+
+#svg-container, #canvas-container {
+  position: absolute;
+  margin: 15px; }
+
+#character-info {
+  position: absolute;
+  width: 640px;
+  margin: 0 15px;
+  bottom: 15px; }
+
+#hp-div, #score-div, #time-survived-div {
+  display: inline-block; }
+
+#score-div {
+  margin-left: 30px; }
+
+#time-survived-div {
+  position: absolute;
+  right: 0; }
+
