@@ -16,8 +16,7 @@
   background-image: url("../images/menu/menu_background.png");
   background-size: 390px 540px;
   font-family: 'press-start';
-  text-align: center;
-  z-index: 1; }
+  text-align: center; }
   #game-menu ul, #game-info ul {
     list-style: none;
     padding: 15px;
@@ -26,7 +25,11 @@
       margin-bottom: 15px; }
       #game-menu ul li .menu-button, #game-info ul li .menu-button {
         cursor: pointer; }
-  #game-menu div, #game-info div {
+    #game-menu ul li:nth-child(2), #game-info ul li:nth-child(2) {
+      display: none; }
+  #game-menu div:not(#back-button), #game-info div:not(#back-button) {
+    position: absolute;
+    display: none;
     padding: 30px;
     font-size: 15px; }
 

@@ -148,6 +148,7 @@ var update = function (character, enemies, ctx, canvas, keysDown, modifier, elap
 var request;
 var stopAnimation = false;
 var elapsedForScore = 0;
+var isGameActive = false;
 // 'then' should be passed as Date.now(), 'elapsed' as 0
 var run = function (character, enemies, ctx, canvas, keysDown, then, elapsed, spawnTimer, spawnRate) {
     var now = Date.now();
@@ -178,6 +179,29 @@ var run = function (character, enemies, ctx, canvas, keysDown, then, elapsed, sp
     if (stopAnimation) {
         cancelAnimationFrame(request);
     }
+};
+
+var startGame = function () {
+    paper.image('../images/terain_grass.png', 0, 0, 640, 640);
+    isGameActive = true;
+    stopAnimation = false;
+    elapsedForScore = 0;
+    score = 0;
+
+    var enemies = [];
+
+    var healthPoints = 100,
+        movingSpeed = 150,
+        damage = 30,
+        attackSpeed = 250;
+
+    var spawnTimer = 1300,
+        spawnRate = 0.015;
+
+    var character = initializeCharacter(canvas.width / 2, canvas.height / 2,
+        healthPoints, movingSpeed, damage, attackSpeed);
+
+    run(character, enemies, ctx, canvas, keysDown, Date.now(), 0, spawnTimer, spawnRate);
 };
 
 var getTimeSurvived = function (elapsedForScore) {
@@ -216,12 +240,7 @@ var ifOutField = function (character, canvas) {
 var isPaused = false;
 window.addEventListener('keydown', function (e) {
     if (e.keyCode === 80) {
-        if (!isPaused) {
-            isPaused = true;
-        }
-        else {
-            isPaused = false;
-        }
+        showMenu();
     }
 });
 

@@ -32,6 +32,7 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
     character.shots = [];
 
     character.move = function (keysDown, modifier) {
+        // Arrows
         if (37 in keysDown) { // The player is moving left
             this.position.x -= this.movingSpeed * modifier;
         }
@@ -45,6 +46,23 @@ var createCharacter = function (position, healthPoints, movingSpeed, attack, ima
         }
 
         if (40 in keysDown) { // The player is moving down
+            this.position.y += this.movingSpeed * modifier;
+        }
+
+        // WASD
+        if (65 in keysDown) { // The player is moving left
+            this.position.x -= this.movingSpeed * modifier;
+        }
+
+        if (87 in keysDown) { // The player is moving up
+            this.position.y -= this.movingSpeed * modifier;
+        }
+
+        if (68 in keysDown) { // The player is moving right
+            this.position.x += this.movingSpeed * modifier;
+        }
+
+        if (83 in keysDown) { // The player is moving down
             this.position.y += this.movingSpeed * modifier;
         }
     };

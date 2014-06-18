@@ -23,7 +23,6 @@ $fontSize: 15px;
 	background-size: ($gameScreenSize - 250) ($gameScreenSize - 100);
 	font-family: 'press-start';
 	text-align: center;
-	z-index: 1;
 
 	ul {
 		list-style: none;
@@ -37,12 +36,21 @@ $fontSize: 15px;
 				cursor: pointer;
 			}
 		}
+
+		li:nth-child(2) {
+			display: none;
+		}
 	}
 
-	div {
+	div:not(#back-button) {
+		position: absolute;
+		display: none;
 		padding: $spacing * 2;
-
 		font-size: $fontSize;
+	}
+
+	.back-button {
+
 	}
 }
 
@@ -69,9 +77,6 @@ $fontSize: 15px;
 
 #hp-div, #score-div, #time-survived-div {
 	display: inline-block;
-}
-
-#hp-div {
 }
 
 #score-div {
