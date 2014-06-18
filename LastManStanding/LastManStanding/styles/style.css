@@ -23,15 +23,25 @@
     padding-top: 45px; }
     #game-menu ul li, #game-info ul li {
       margin-bottom: 15px; }
-      #game-menu ul li .menu-button, #game-info ul li .menu-button {
-        cursor: pointer; }
     #game-menu ul li:nth-child(2), #game-info ul li:nth-child(2) {
       display: none; }
+  #game-menu .menu-button, #game-info .menu-button {
+    cursor: pointer; }
+  #game-menu .show, #game-info .show {
+    display: ''; }
   #game-menu div:not(#back-button), #game-info div:not(#back-button) {
     position: absolute;
     display: none;
     padding: 30px;
     font-size: 15px; }
+  #game-menu #back-button, #game-info #back-button {
+    position: absolute;
+    padding: 30px;
+    bottom: 15px; }
+  #game-menu #credits, #game-info #credits {
+    top: 45px;
+    left: 0;
+    right: 0; }
 
 #game-container {
   margin: 0 auto;
