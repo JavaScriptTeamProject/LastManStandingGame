@@ -111,6 +111,11 @@ var updateShots = function (character, enemies, ctx, canvas, modifier) {
                     && currShot.currPosition.y <= enemies[j].position.y + character.attackImage.height + 30
                     && enemies[j].position.y <= currShot.currPosition.y + character.attackImage.height) {
                 enemies[j].hp -= currShot.damage;
+                ctx.drawImage(onHitImage(1), enemies[j].position.x, enemies[j].position.y);
+                ctx.drawImage(onHitImage(1), enemies[j].position.x, enemies[j].position.y);
+                ctx.drawImage(onHitImage(1), enemies[j].position.x, enemies[j].position.y);
+                ctx.drawImage(onHitImage(1), enemies[j].position.x, enemies[j].position.y);
+                ctx.drawImage(onHitImage(1), enemies[j].position.x, enemies[j].position.y);
                 character.shots.splice(i, 1);
             }
 
@@ -254,3 +259,15 @@ window.addEventListener("keydown", function (e) {
 window.addEventListener("keyup", function (e) {
     delete keysDown[e.keyCode];
 });
+
+var onHitImage = function (index) {
+    var onHitImages = [
+    '../images/hero/hero_down_hit.png',
+    '../images/enemy/enemy_down_hit.png'
+    ];
+
+    var characterHit = new Image();
+    characterHit.src = onHitImages[index];
+
+    return characterHit;
+}
