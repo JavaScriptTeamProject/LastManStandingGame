@@ -142,6 +142,7 @@ var createEnemy = function (position, healthPoints, movingSpeed, attack, images)
             && character.position.y <= (this.position.y + 34)
             && this.position.y <= (character.position.y + 34)) {
             character.hp -= this.attack.damage * this.attack.speed;
+            ctx.drawImage(onHitImage(0), character.position.x, character.position.y);
 
             if (character.hp < 0) {
                 character.hp = 0;
